@@ -1,0 +1,139 @@
+[gd_scene load_steps=22 format=3 uid="uid://bui30j08h64tj"]
+
+[ext_resource type="Texture2D" uid="uid://dlytkvhw85vct" path="res://Characters/Player/SkellingtonIdle.png" id="1_6mep6"]
+[ext_resource type="Script" uid="uid://ciyl7omy0vy67" path="res://Characters/Player/Player.gd" id="1_oc658"]
+[ext_resource type="Script" uid="uid://ngwt0ainmd7x" path="res://Characters/Player/PlayerMovement.gd" id="1_yeefy"]
+[ext_resource type="Texture2D" uid="uid://egk4e28kthuj" path="res://Characters/Player/SkellingtonWalk.png" id="2_yeefy"]
+[ext_resource type="Script" uid="uid://dyp8emks0rcau" path="res://Characters/Player/PlayerAnimations.gd" id="4_aj84o"]
+[ext_resource type="Script" uid="uid://dsgngy8ux3qmj" path="res://Characters/Player/PlayerInput.gd" id="6_11ham"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj84o"]
+atlas = ExtResource("1_6mep6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc658"]
+atlas = ExtResource("1_6mep6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11ham"]
+atlas = ExtResource("1_6mep6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpjpg"]
+atlas = ExtResource("1_6mep6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14m2a"]
+atlas = ExtResource("1_6mep6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl42p"]
+atlas = ExtResource("1_6mep6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1niqm"]
+atlas = ExtResource("2_yeefy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fff4"]
+atlas = ExtResource("2_yeefy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h4vt"]
+atlas = ExtResource("2_yeefy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wraqo"]
+atlas = ExtResource("2_yeefy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ij6m"]
+atlas = ExtResource("2_yeefy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xv0b"]
+atlas = ExtResource("2_yeefy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jpmk"]
+atlas = ExtResource("2_yeefy")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xivi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj84o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc658")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ham")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpjpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14m2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl42p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1niqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fff4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h4vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wraqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ij6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xv0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jpmk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeefy"]
+
+[node name="PlayerObject" type="Node2D"]
+script = ExtResource("1_oc658")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_yeefy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_5xivi")
+animation = &"idle"
+frame = 2
+frame_progress = 0.06583644
+script = ExtResource("4_aj84o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_yeefy")
+
+[node name="WeaponPoint" type="Marker2D" parent="Player"]
+position = Vector2(9, 4)
+
+[node name="PlayerInput" type="Node2D" parent="Player"]
+script = ExtResource("6_11ham")
+
+[node name="WeaponSlot" type="Node2D" parent="Player"]
+position = Vector2(0, 1)

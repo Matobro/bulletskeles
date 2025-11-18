@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://10j3ge0norsv"]
+
+[ext_resource type="Script" uid="uid://bop45h4ntp3gv" path="res://Weapons/Data/Weapon.gd" id="1_2qy3u"]
+[ext_resource type="Texture2D" uid="uid://bfdjdncjb33br" path="res://Weapons/Gun/gun.png" id="1_e45m5"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_2qy3u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e45m5")
+offset = Vector2(5.47, 3.525)
