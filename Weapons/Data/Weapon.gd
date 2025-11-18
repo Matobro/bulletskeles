@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name Weapon
 
@@ -18,4 +18,9 @@ func call_shoot():
 		
 #overridden per weapon - i think idk fsajiofsajoifsajhinp
 func shoot():
-	pass
+	var bullet = stats.projectile_scene.instantiate()
+	bullet.global_position = global_position
+	
+	get_tree().current_scene.add_child(bullet)
+	var direction = Vector2.RIGHT.rotated(rotation)
+	bullet.velocity = direction * stats.bullet_speed
