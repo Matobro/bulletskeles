@@ -2,6 +2,7 @@ extends Node2D
 
 class_name Weapon
 
+var barrel
 var stats: WeaponStats
 var player: Player
 
@@ -9,6 +10,10 @@ var cooldown = 0.2
 var _cooldown_timer = 0.0
 var _reload_timer = 0.0
 var _reloading: bool = false
+
+func setup_weapon():
+	barrel = $Barrel
+	cooldown = stats.fire_rate
 
 func _process(delta: float) -> void:
 	if _cooldown_timer > 0.0:
@@ -70,9 +75,13 @@ func call_shoot():
 #overridden per weapon - i think idk fsajiofsajoifsajhinp
 ## Execute shoot
 func shoot():
-	var bullet = stats.projectile_scene.instantiate()
-	bullet.global_position = global_position
-	
-	get_tree().current_scene.add_child(bullet)
-	var direction = Vector2.RIGHT.rotated(rotation)
-	bullet.velocity = direction * stats.bullet_speed
+	for i in range(stats.projectiles):
+		var bullet = stats.projectile_scene.instantiate()
+
+		var spread = deg_to_rad(stats.spread)
+		var rng_offset = randf_range(-spread, spread)
+		bullet.global_position = barrel.global_position
+		
+		get_tree().current_scene.add_child(bullet)
+		var direction = Vector2.RIGHT.rotated(rotation + rng_offset)
+		bullet.velocity = direction * stats.bullet_speed

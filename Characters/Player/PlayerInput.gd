@@ -7,6 +7,10 @@ var player
 func initialize_input(player_ref):
 	player = player_ref
 
+func _process(_delta):
+	if Input.is_action_pressed("shoot"):
+		player.current_weapon.call_shoot()
+
 func _input(event):
 	if !player.current_weapon: return
 
@@ -23,5 +27,7 @@ func _input(event):
 		else:
 			player.current_weapon.scale.y = 1
 
-	if event.is_action_pressed("shoot"):
-		player.current_weapon.call_shoot()
+	if event.is_action_pressed("l1"):
+		player.change_weapon(-1)
+	if event.is_action_pressed("r1"):
+		player.change_weapon(1)

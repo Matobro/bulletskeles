@@ -23,7 +23,7 @@ func update_weapon(wep):
     update_magazine()
 
 func update_name():
-    weapon_text.text = weapon.name
+    weapon_text.text = weapon_stats.weapon_name
 
 func update_ammo():
     ammo_text.text = str(weapon_stats.ammo)

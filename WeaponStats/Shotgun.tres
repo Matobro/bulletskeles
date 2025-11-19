@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=3 format=3 uid="uid://f0kip74j05wm"]
+
+[ext_resource type="PackedScene" uid="uid://jf3ftxkv07yb" path="res://Projectiles/Bullet.tscn" id="1_bnfw7"]
+[ext_resource type="Script" uid="uid://bwaghql1aw5m" path="res://Weapons/Data/WeaponStats.gd" id="1_gj8s7"]
+
+[resource]
+script = ExtResource("1_gj8s7")
+weapon_name = "Shotgun"
+fire_rate = 0.5
+projectiles = 3
+bullet_usage = 3
+magazine_size = 3
+current_magazine = 3
+reload_time = 0.5
+spread = 20.0
+bullet_speed = 350.0
+projectile_scene = ExtResource("1_bnfw7")
+metadata/_custom_type_script = "uid://bwaghql1aw5m"

@@ -2,6 +2,7 @@ extends Resource
 
 class_name WeaponStats
 
+@export var weapon_name: String = "Gun"
 @export var damage: int = 1
 @export var fire_rate: float = 0.1
 @export var projectiles: int = 1
