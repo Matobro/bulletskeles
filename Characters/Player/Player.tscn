@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bui30j08h64tj"]
+[gd_scene load_steps=23 format=3 uid="uid://bui30j08h64tj"]
 
 [ext_resource type="Texture2D" uid="uid://dlytkvhw85vct" path="res://Characters/Player/SkellingtonIdle.png" id="1_6mep6"]
 [ext_resource type="Script" uid="uid://ciyl7omy0vy67" path="res://Characters/Player/Player.gd" id="1_oc658"]
 [ext_resource type="Script" uid="uid://ngwt0ainmd7x" path="res://Characters/Player/PlayerMovement.gd" id="1_yeefy"]
+[ext_resource type="PackedScene" uid="uid://rbpa0vf1bi6q" path="res://UI/PlayerUI.tscn" id="2_vpjpg"]
 [ext_resource type="Texture2D" uid="uid://egk4e28kthuj" path="res://Characters/Player/SkellingtonWalk.png" id="2_yeefy"]
 [ext_resource type="Script" uid="uid://dyp8emks0rcau" path="res://Characters/Player/PlayerAnimations.gd" id="4_aj84o"]
 [ext_resource type="Script" uid="uid://dsgngy8ux3qmj" path="res://Characters/Player/PlayerInput.gd" id="6_11ham"]
@@ -116,8 +117,14 @@ animations = [{
 [node name="PlayerObject" type="Node2D"]
 script = ExtResource("1_oc658")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("2_vpjpg")]
+
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_yeefy")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_5xivi")
